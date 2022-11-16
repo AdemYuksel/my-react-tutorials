@@ -1,0 +1,28 @@
+table {
+    --accent-color: #362f4b;
+    --text-color: slategray;
+    --bgColorDarker: #ececec;
+    --bgColorLighter: #fcfcfc;
+    --insideBorderColor: lightgray;
+    border-spacing: 0.15rem;
+    /* width: 100%; */
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--accent-color);
+    border-collapse: collapse;
+    border-color: #362f4b;
+    /* color: var(--text-color); */
+    table-layout: fixed;
+}
+
+th {
+    background-color: #ddd;
+}
+
+th,
+td {
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    border-right: 0;
+}

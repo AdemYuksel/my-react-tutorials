@@ -23,15 +23,30 @@ function App() {
   return (
     <div className="App">
       <Table
-        headColumn={["3", "4", "1"]}
-        head={["User Information", "Address", "Map"]}
-        subhead={["Name", "Username", "E-mail", "Street", "Suite", "City", "Zip Code", "Location"]}
+        searchable={true}
+        // headColumn={["3", "4", "1"]}
+        head={[
+          { name: 'User Information', colSpan: "3" },
+          { name: 'Address', colSpan: "4" },
+          { name: 'Map', colSpan: "1" },
+        ]}
+        subhead={[
+          { name: 'Name', sortable: true },
+          { name: 'Username', sortable: true },
+          { name: 'E-mail', sortable: true },
+          { name: 'Street', sortable: true },
+          { name: 'Suite', sortable: true },
+          { name: 'City', sortable: true },
+          { name: 'Zip Code', sortable: true },
+          { name: 'Location', sortable: true }
+          // "Name", "Username", "E-mail", "Street", "Suite", "City", "Zip Code", "Location"
+        ]}
         body={
           state.map((val) => (
             [
               val.name,
               val.username,
-              val.email,
+              val.email.toLocaleLowerCase('TR'),
               val.address.street,
               val.address.suite,
               val.address.city,

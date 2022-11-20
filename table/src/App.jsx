@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import './App.css'
 import Table from './components/Table/Table'
 
@@ -35,7 +36,11 @@ function App() {
               val.address.suite,
               val.address.city,
               val.address.zipcode,
-              val.address.geo.lat + ", " + val.address.geo.lng,
+              <FaMapMarkerAlt type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open('https://maps.google.com?q=' + val.address.geo.lat + "," + val.address.geo.lng, '_blank');
+                }} />
             ]
           ))
         }

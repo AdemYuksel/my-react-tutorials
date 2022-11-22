@@ -19,7 +19,7 @@ function Table({ head, subhead, body, searchable }) {
 
     if (!body || body?.length === 0) {
         return (
-            <div className="">Gösterilecek veri bulunmuyor.</div>
+            <div className="">Sorry, no data found.</div>
         )
     }
 
@@ -50,6 +50,7 @@ function Table({ head, subhead, body, searchable }) {
                     <tr>
                         {head.map((h, key) => (
                             <th colSpan={h?.colSpan}
+                                rowSpan={h?.rowSpan}
                                 key={key}
                             >
                                 {h?.name}
@@ -62,7 +63,7 @@ function Table({ head, subhead, body, searchable }) {
                                 key={key}
                             >{h.name}
                                 {h.sortable && (
-                                    <button onClick={() => {
+                                    <button className="sort-button" onClick={() => {
                                         if (sorting?.key === key) {
                                             setSorting({
                                                 key,

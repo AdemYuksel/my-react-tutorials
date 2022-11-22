@@ -46,6 +46,18 @@ td {
     top: 1px;
 }
 
+/* Table Sorting Symbology */
+.sort-button {
+    background: linear-gradient(to bottom, #2762f3 5%, #362f4b 100%);
+    border-radius: 4px;
+    border: 1px solid #2762f3;
+    color: #ffffff;
+    background-color: transparent;
+    font-family: Arial;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
 /* Search Bar*/
 .search-bar input,
 .search-btn,

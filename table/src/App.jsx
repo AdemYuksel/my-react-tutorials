@@ -24,11 +24,11 @@ function App() {
     <div className="App">
       <Table
         searchable={true}
-        // headColumn={["3", "4", "1"]}
         head={[
           { name: 'User Information', colSpan: "3" },
           { name: 'Address', colSpan: "4" },
           { name: 'Map', colSpan: "1" },
+          { name: 'Edit', colSpan: "1", rowSpan: "2" },
         ]}
         subhead={[
           { name: 'Name', sortable: true },
@@ -38,27 +38,31 @@ function App() {
           { name: 'Suite', sortable: true },
           { name: 'City', sortable: true },
           { name: 'Zip Code', sortable: true },
-          { name: 'Location', sortable: true }
-          // "Name", "Username", "E-mail", "Street", "Suite", "City", "Zip Code", "Location"
+          { name: 'Location', sortable: false },
         ]}
-        body={
-          state.map((val) => (
+        body={state && state.map((val, key) => (
+          [
+            val.name,
+            val.username,
+            val.email.toLocaleLowerCase('TR'),
+            val.address.street,
+            val.address.suite,
+            val.address.city,
+            val.address.zipcode,
+            <FaMapMarkerAlt type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open('https://maps.google.com?q=' + val.address.geo.lat + "," + val.address.geo.lng, '_blank');
+              }} />,
             [
-              val.name,
-              val.username,
-              val.email.toLocaleLowerCase('TR'),
-              val.address.street,
-              val.address.suite,
-              val.address.city,
-              val.address.zipcode,
-              <FaMapMarkerAlt type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open('https://maps.google.com?q=' + val.address.geo.lat + "," + val.address.geo.lng, '_blank');
-                }} />
+              <button className="">Edit</button>,
+              <button onClick={() => {
+                const tmpUsers = [...state]
+                tmpUsers.splice(key, 1)
+                setState(tmpUsers)
+              }} className="">Delete</button>
             ]
-          ))
-        }
+          ]))}
       />
     </div>
   )

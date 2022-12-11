@@ -76,6 +76,7 @@ function App() {
           </div>
           <div id="options">
             {
+              (localStorage.getItem("code") != null && localStorage.getItem("flag") != null) &&
               getFlag().data.map((flag, key, index, index2) =>
                 <div className="option">
                   <input className="s-c top" type="radio" name="platform" value={flag.name} onChange={(e) => setSelect(e.target.value)} />
